@@ -1,0 +1,54 @@
+<div class="row m-4">
+    <div class="col-md-4 mx-auto  ">
+        <div class="card mx-6">  
+            <div class="card-body p-4"> 
+                <!---Title-->
+                <h1 class="text-center">Welcome to Login Page</h1> 
+                <!--Login Form-->
+                <form class="form" [formGroup] = "form"  >
+                    <div class="form-group">
+                        <label for="username" 
+                               class="form-label h6">Username</label>  
+                        <span name="person-outline"></span>
+                        
+                        <div style="display: flex; ">
+                            <i class="fa fa-user icon-custom" ></i>
+                            <input type="text" id="username"
+                            placeholder="Enter Username"
+                            class="form-control"
+                            formControlName="username">
+                        </div>
+                    </div><br/>
+                    <div class="form-group">
+                        <label for="pwd" class="form-label h6">Password</label>
+                        <div style="display: flex; ">
+                            <i class="fa fa-key icon-custom"></i>
+                                <input #pswd type="password" 
+                                    class="form-control"
+                                    placeholder="Enter Password"
+                                    id="pwd" 
+                                    formControlName="password">
+                                <i class="eye-show fa" 
+                                    [ngClass]="{
+                                    'fa-eye-slash': !fieldTextType,
+                                    'fa-eye': fieldTextType}"
+                                    (click)="pswd.type=pswd.type=='password' ? 'text':'password'"
+                                    (click) ="toggleFieldTextType()">
+                                </i>
+                        </div>
+                    </div>
+                </form>
+                <div class="form-group d-grid gap-2 m-4">
+                    <button class="btn btn-primary mt-2 shadow-p3 btn-block btn-lg" (click)="verify()" [disabled]="!form.valid">Login</button> <br/>
+                    <a routerLink="register" class="btn btn-success shadow-p3 btn-block btn-lg">SignUp Here</a>
+                </div>
+
+                <div *ngIf="!value" class="d-flex justify-content-center">
+                    <div class="spinner-border text-primary" role="status" >   
+                    </div>
+                    Loading...
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

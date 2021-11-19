@@ -1,0 +1,23 @@
+.background{
+    background-color: white;
+    height: 300vh;
+
+    .p-5{
+        font-size: 18px;
+        word-spacing: 2px;
+        font-weight: 300;
+        text-align: justify;
+        line-height: 40px;
+    }   
+    .custom-weight{
+        font-weight: 400;
+    }
+}
+.bg-primary{
+    background-color: #3c3950 !important;
+}
+
+.jumbotron{
+    background-color: #f5f6fa;
+    padding: 30px;
+}

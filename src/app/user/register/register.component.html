@@ -1,0 +1,69 @@
+<div class="row m-4">
+    <div class="col-md-6 mx-auto my-4">
+        <div class="card mx-6">  
+            <div class="card-body p-4">  
+                    <h1 class="text-center text-uppercase bg-success text-white p-4 mb-4">Registration form</h1>
+                <form [formGroup] = "form" class="form-group">
+                    <div class="form-group">
+                        <label for="first-name " class="h6">First Name<span class="text-danger"> *</span></label>
+                        <input class="form-control" id="first-name" type="text" formControlName="firstname" >
+                        <div  *ngIf="firstname.touched && firstname.invalid" class="alert alert-danger">
+                            <div *ngIf="firstname.errors.required">First Name is required</div>
+                            <div *ngIf="firstname.errors.minlength">First Name is minimum should be {{firstname.errors.minlength.requiredLength}} characters</div>
+                            <div *ngIf="firstname.errors.cannotContainSpace">First Name cannot contain space</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name" class="h6">Last Name <span class="text-danger"> *</span></label>
+                        <input class="form-control" id="last-name" type="text" formControlName="lastname">
+                        <div *ngIf="form.get('lastname').touched && form.get('lastname').invalid" class="alert alert-danger">
+                            <div *ngIf="form.get('lastname').errors.required">Last Name is required</div>
+                            <div *ngIf="form.get('lastname').errors.minlength">Last Name is minimum should be {{form.get('lastname').errors.minlength.requiredLength}} characters</div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="h6">Email Address <span class="text-danger"> *</span></label>
+                        <input class="form-control" id="email" type="email" formControlName="email">
+                        <div *ngIf="form.get('email').touched && form.get('email').invalid" class="alert alert-danger">
+                            Email Address is required
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile" class="h6">Mobile Number <span class="text-danger"> *</span></label>
+                        <input class="form-control" id="mobile" type="text" formControlName="mobile">
+                        <div *ngIf="form.get('mobile').touched && form.get('mobile').invalid" class="alert alert-danger">
+                            <div *ngIf="form.get('mobile').errors.required">Mobile number required</div>
+                            <div *ngIf="form.get('mobile').errors.minlength">Mobile number should be {{form.get('mobile').errors.minlength.requiredLength}} digits</div>
+                            <div *ngIf="form.get('mobile').errors.pattern">Mobile number not valid</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username" class="h6">Username <span class="text-danger"> *</span></label>
+                        <input class="form-control" id="username" type="text" formControlName="username">
+                        <div *ngIf="form.get('username').touched && form.get('username').invalid" class="alert alert-danger">Username Required</div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="password" class="h6">Password<span class="text-danger"> *</span></label>
+                        <div style="display: flex; ">
+                        <input #x class="form-control inl" id="password" type="password" formControlName="password">
+                        <i class="fa" 
+                        [ngClass]="{
+                       'fa-eye-slash': !fieldTextType,
+                       'fa-eye': fieldTextType
+                     }"
+                     id="custom"
+                     (click)="x.type=x.type=='password'?'text':'password'"
+                     (click) ="toggleFieldTextType()"></i>
+                    </div>
+                   <div *ngIf="form.get('password').touched && form.get('password').invalid" class="alert alert-danger">Password Required</div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary mt-2" (click)="onSubmit()" value="Submit" [disabled]="!form.valid">
+                    </div>
+                </form>
+            </div>
+    </div>
+</div>
